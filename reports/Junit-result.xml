@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="14.991515999999999">
-<testsuite name="login.spec.ts" timestamp="2025-09-25T08:25:21.447Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.019" errors="0">
-<testcase name="Login Tests › Negative Tests › Login with wrong password should fail" classname="login.spec.ts" time="3.019">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="14.179292">
+<testsuite name="login.spec.ts" timestamp="2025-09-26T04:28:54.037Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.665" errors="0">
+<testcase name="Login Tests › Negative Tests › Login with wrong password should fail" classname="login.spec.ts" time="2.665">
 </testcase>
 </testsuite>
 </testsuites>

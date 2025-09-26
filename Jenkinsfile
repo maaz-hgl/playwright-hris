@@ -1,26 +1,30 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'NodeJS' // The NodeJS installation name you configured in Jenkins
+    environment {
+        // Load secrets from Jenkins credentials if needed
+        SECRET_KEY = credentials('SECRET_KEY_ID') // You can store encrypted keys in Jenkins
+        BASE_URL = "http://localhost:3000"
+        EMAIL_USER = credentials('EMAIL_USER')
+        EMAIL_PASS = credentials('EMAIL_PASS')
     }
 
-    environment {
-        NODE_VERSION = '16' // or whatever Node version you installed
+    tools {
+        nodejs "NodeJS"  // The NodeJS installation you configured in Jenkins
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', 
-                    url: 'https://github.com/<your_repo>.git', 
-                    credentialsId: '<your-credentials-id>'
+                git branch: 'main',
+                    url: 'git@github-work:maaz-hgl/playwright-hris.git',
+                    credentialsId: 'GIT_SSH_CREDENTIALS_ID'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci' // Clean install node_modules
+                sh 'npm ci'
             }
         }
 
@@ -38,14 +42,21 @@ pipeline {
 
         stage('Publish Allure Report') {
             steps {
-                sh 'npx allure open allure-report'
+                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             }
         }
     }
 
     post {
         always {
-            echo "Pipeline finished. You can download or view the Allure report."
+            archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
+            junit 'test-results/**/*.xml' // If you have junit reports
+        }
+
+        failure {
+            mail to: "${EMAIL_USER}",
+                 subject: "Playwright Tests Failed",
+                 body: "Check Jenkins build ${env.BUILD_URL} for details"
         }
     }
 }
