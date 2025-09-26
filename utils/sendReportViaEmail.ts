@@ -46,7 +46,7 @@ export async function sendTestReportEmail(to: string, summary: TestSummary, repo
   });
 
   const mailOptions = {
-    from: process.env.EMAIL_USER,
+    from: config.email.user,
     to,
     subject: "Playwright Test Report",
     html: summaryHtml,
