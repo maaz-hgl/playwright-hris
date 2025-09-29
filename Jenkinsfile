@@ -2,6 +2,10 @@ pipeline {
     agent any
 
     environment {
+
+        NODE_VERSION = '18'
+
+        
         // Non-sensitive
         BASE_URL = 'http://localhost:3000'
         SIGNUP_TITLE = 'Join Sync Dynamics Today'
