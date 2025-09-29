@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid #000000;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f7f9fa;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 26px;
+  color: #2c3e50;
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px;
+  color: #34495e;
+}
+
+.report-table {
+  width: 50%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.report-table th, .report-table td {
+  border: 1px solid #34495e;
+  padding: 12px;
+  text-align: center;
+}
+
+.report-table th {
+  background-color: #dcdde1;
+}
+
+.report-table td.passed {
+  background-color: #d4edda;
+  color: #155724;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.report-table td.failed {
+  background-color: #f8d7da;
+  color: #721c24;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.report-table td.skipped {
+  background-color: #fff3cd;
+  color: #856404;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.report-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.report-link a {
+  background-color: #1f618d;
+  color: white;
+  padding: 10px 18px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.report-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #34495e;
+}

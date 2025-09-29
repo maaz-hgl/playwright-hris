@@ -127,7 +127,7 @@ test.describe("Login Tests", () => {
       expect(passwordValidation).toBe("Please fill out this field.");
     });
 
-    test.only("Login with wrong password should fail", async ({ page }) => {
+    test("Login with wrong password should fail", async ({ page }) => {
       const loginPage = new LoginPage(page);
       await page.goto(`${config.baseURL}/login`);
 
@@ -138,7 +138,7 @@ test.describe("Login Tests", () => {
       await loginPage.clickLogin(false); // skip waiting for dashboard
 
       const alert = page.locator('div[role="alert"]').first();
-      await expect(alert).toHaveText(/Invalid password/i);
+      await expect(alert).toHaveText(/Invalid passworddddjkk/i);
     });
 
   });

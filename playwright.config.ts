@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 import * as dotenv from 'dotenv';
 import { FullConfig } from "@playwright/test";
-import { sendTeamsMessage } from "./utils/teams";
+// import { sendTeamsMessage } from "./utils/teams";
 
 dotenv.config();
 
@@ -34,3 +34,4 @@ export default defineConfig({
     // { name: 'webkit', use: { ...devices['Desktop Safari'] } },
   ],
 });
+

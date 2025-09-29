@@ -1,0 +1,47 @@
+<div style="font-family: Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 20px; background-color: #f4f6f8; border-radius: 10px;">
+  <h2 style="text-align:center; color:#2C3E50; margin-bottom:5px;">📊 Automation Test Report</h2>
+  <p style="text-align:center; color:#7D3C98; font-size:14px; margin-top:0;">Generated on: <strong>${startTime}</strong></p>
+
+  <table cellpadding="0" cellspacing="0" width="100%" style="margin: 20px 0; text-align:center; border-collapse: collapse;">
+    <tr>
+      <td style="width:25%; padding:5px;">
+        <table cellpadding="0" cellspacing="0" width="100%" style="background:#ecf0f1; border-radius:8px;">
+          <tr><td style="padding:15px;">
+            <p style="margin:0; font-size:20px; color:#34495E;">${total}</p>
+            <p style="margin:0; color:#7F8C8D;">📝 Total</p>
+          </td></tr>
+        </table>
+      </td>
+      <td style="width:25%; padding:5px;">
+        <table cellpadding="0" cellspacing="0" width="100%" style="background:#d4edda; border-radius:8px;">
+          <tr><td style="padding:15px;">
+            <p style="margin:0; font-size:20px; color:green;">${passed}</p>
+            <p style="margin:0; color:#155724;">✅ Passed</p>
+          </td></tr>
+        </table>
+      </td>
+      <td style="width:25%; padding:5px;">
+        <table cellpadding="0" cellspacing="0" width="100%" style="background:#fff3cd; border-radius:8px;">
+          <tr><td style="padding:15px;">
+            <p style="margin:0; font-size:20px; color:#856404;">${skipped}</p>
+            <p style="margin:0; color:#856404;">⚠️ Skipped</p>
+          </td></tr>
+        </table>
+      </td>
+      <td style="width:25%; padding:5px;">
+        <table cellpadding="0" cellspacing="0" width="100%" style="background:#f8d7da; border-radius:8px;">
+          <tr><td style="padding:15px;">
+            <p style="margin:0; font-size:20px; color:red;">${failed}</p>
+            <p style="margin:0; color:#721c24;">❌ Failed</p>
+          </td></tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <div style="text-align:center; margin-top:20px;">
+    <a href="${reportUrl}" style="display:inline-block; background:#1F618D; color:white; padding:12px 25px; border-radius:6px; text-decoration:none; font-weight:bold;">🔗 View Full HTML Report</a>
+  </div>
+
+  <p style="text-align:center; color:#7F8C8D; margin-top:25px;">Regards,<br/>Automation Team</p>
+</div>

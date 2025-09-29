@@ -1,6 +1,85 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="13.656068">
-<testsuite name="login.spec.ts" timestamp="2025-09-26T06:43:31.421Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.696" errors="0">
-<testcase name="Login Tests › Negative Tests › Login with wrong password should fail" classname="login.spec.ts" time="2.696">
+<testsuites id="" name="" tests="8" failures="1" skipped="0" errors="0" time="21.715949">
+<testsuite name="createUser.spec.ts" timestamp="2025-09-29T10:54:19.957Z" hostname="chromium" tests="1" failures="0" skipped="0" time="6.493" errors="0">
+<testcase name="Login and create a new user" classname="createUser.spec.ts" time="6.493">
+</testcase>
+</testsuite>
+<testsuite name="login.spec.ts" timestamp="2025-09-29T10:54:19.957Z" hostname="chromium" tests="4" failures="1" skipped="0" time="15.817" errors="0">
+<testcase name="Login Tests › Positive Tests › Login with valid credentials should succeed" classname="login.spec.ts" time="6.245">
+</testcase>
+<testcase name="Login Tests › Negative Tests › Login with invalid email should fail" classname="login.spec.ts" time="1.452">
+</testcase>
+<testcase name="Login Tests › Negative Tests › Login with empty credentials should fail" classname="login.spec.ts" time="1.514">
+</testcase>
+<testcase name="Login Tests › Negative Tests › Login with wrong password should fail" classname="login.spec.ts" time="6.606">
+<failure message="login.spec.ts:130:9 Login with wrong password should fail" type="FAILURE">
+<![CDATA[  [chromium] › login.spec.ts:130:9 › Login Tests › Negative Tests › Login with wrong password should fail 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: locator('div[role="alert"]').first()
+    Expected pattern: /Invalid passworddddjkk/i
+    Received string:  "Invalid password"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveText" with timeout 5000ms
+      - waiting for locator('div[role="alert"]').first()
+        7 × locator resolved to <div role="alert" class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorError MuiAlert-standardError MuiAlert-standard css-1lr36y1-MuiPaper-root-MuiAlert-root">…</div>
+          - unexpected value "Invalid password"
+
+
+      139 |
+      140 |       const alert = page.locator('div[role="alert"]').first();
+    > 141 |       await expect(alert).toHaveText(/Invalid passworddddjkk/i);
+          |                           ^
+      142 |     });
+      143 |
+      144 |   });
+        at /Users/macbookair/Desktop/PlaywrightHRIS/tests/login.spec.ts:141:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/login-Login-Tests-Negative-aa0fa--wrong-password-should-fail-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/login-Login-Tests-Negative-aa0fa--wrong-password-should-fail-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/login-Login-Tests-Negative-aa0fa--wrong-password-should-fail-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/login-Login-Tests-Negative-aa0fa--wrong-password-should-fail-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/login-Login-Tests-Negative-aa0fa--wrong-password-should-fail-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../test-results/login-Login-Tests-Negative-aa0fa--wrong-password-should-fail-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../test-results/login-Login-Tests-Negative-aa0fa--wrong-password-should-fail-chromium/video.webm]]
+
+[[ATTACHMENT|../test-results/login-Login-Tests-Negative-aa0fa--wrong-password-should-fail-chromium/error-context.md]]
+
+[[ATTACHMENT|../test-results/login-Login-Tests-Negative-aa0fa--wrong-password-should-fail-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="signup.spec.ts" timestamp="2025-09-29T10:54:19.957Z" hostname="chromium" tests="3" failures="0" skipped="0" time="14.145" errors="0">
+<testcase name="User Authentication Flow › Positive Scenarios › Signup → DB Activation → Login" classname="signup.spec.ts" time="11.186">
+<system-out>
+<![CDATA[User testuse_1759143263016_8383@example.com activated in DB
+User testuse_1759143263016_8383@example.com deleted from DB
+]]>
+</system-out>
+</testcase>
+<testcase name="User Authentication Flow › Negative Scenarios › Signup with already existing email should fail" classname="signup.spec.ts" time="1.416">
+</testcase>
+<testcase name="User Authentication Flow › Negative Scenarios › Signup with invalid email should fail" classname="signup.spec.ts" time="1.543">
 </testcase>
 </testsuite>
 </testsuites>

@@ -10,7 +10,6 @@
     "allure:run-file": "rm -rf allure-results && npx playwright test $1 --reporter=allure-playwright && allure generate allure-results -o allure-report --clean && allure open allure-report",
     "allure:clean": "rimraf allure-results allure-report"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -41,5 +40,4 @@
     "serve": "^14.2.5",
     "uuid": "^13.0.0"
   }
-  
 }
