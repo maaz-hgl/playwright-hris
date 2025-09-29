@@ -5,6 +5,13 @@ pipeline {
         nodejs "NodeJS"  // Make sure this matches your Jenkins NodeJS installation
     }
 
+    // 🔑 Add your environment variables here
+    environment {
+        SECRET_KEY = "55c1009e51e6c852eea549f1bfa660311262853fef782a9c71555544ef1f69bc"  // Replace with your actual value
+        # Add any other env vars needed for your tests
+        # EXAMPLE_VAR = 'value'
+    }
+
     stages {
         stage('Checkout') {
             steps {
