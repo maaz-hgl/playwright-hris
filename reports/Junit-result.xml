@@ -1,16 +1,16 @@
-<testsuites id="" name="" tests="8" failures="1" skipped="0" errors="0" time="21.715949">
-<testsuite name="createUser.spec.ts" timestamp="2025-09-29T10:54:19.957Z" hostname="chromium" tests="1" failures="0" skipped="0" time="6.493" errors="0">
-<testcase name="Login and create a new user" classname="createUser.spec.ts" time="6.493">
+<testsuites id="" name="" tests="8" failures="1" skipped="0" errors="0" time="19.605875">
+<testsuite name="createUser.spec.ts" timestamp="2025-09-29T12:26:57.830Z" hostname="chromium" tests="1" failures="0" skipped="0" time="5.753" errors="0">
+<testcase name="Login and create a new user" classname="createUser.spec.ts" time="5.753">
 </testcase>
 </testsuite>
-<testsuite name="login.spec.ts" timestamp="2025-09-29T10:54:19.957Z" hostname="chromium" tests="4" failures="1" skipped="0" time="15.817" errors="0">
-<testcase name="Login Tests › Positive Tests › Login with valid credentials should succeed" classname="login.spec.ts" time="6.245">
+<testsuite name="login.spec.ts" timestamp="2025-09-29T12:26:57.830Z" hostname="chromium" tests="4" failures="1" skipped="0" time="15.574" errors="0">
+<testcase name="Login Tests › Positive Tests › Login with valid credentials should succeed" classname="login.spec.ts" time="5.341">
 </testcase>
-<testcase name="Login Tests › Negative Tests › Login with invalid email should fail" classname="login.spec.ts" time="1.452">
+<testcase name="Login Tests › Negative Tests › Login with invalid email should fail" classname="login.spec.ts" time="1.951">
 </testcase>
-<testcase name="Login Tests › Negative Tests › Login with empty credentials should fail" classname="login.spec.ts" time="1.514">
+<testcase name="Login Tests › Negative Tests › Login with empty credentials should fail" classname="login.spec.ts" time="1.694">
 </testcase>
-<testcase name="Login Tests › Negative Tests › Login with wrong password should fail" classname="login.spec.ts" time="6.606">
+<testcase name="Login Tests › Negative Tests › Login with wrong password should fail" classname="login.spec.ts" time="6.588">
 <failure message="login.spec.ts:130:9 Login with wrong password should fail" type="FAILURE">
 <![CDATA[  [chromium] › login.spec.ts:130:9 › Login Tests › Negative Tests › Login with wrong password should fail 
 
@@ -69,17 +69,17 @@
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="signup.spec.ts" timestamp="2025-09-29T10:54:19.957Z" hostname="chromium" tests="3" failures="0" skipped="0" time="14.145" errors="0">
-<testcase name="User Authentication Flow › Positive Scenarios › Signup → DB Activation → Login" classname="signup.spec.ts" time="11.186">
+<testsuite name="signup.spec.ts" timestamp="2025-09-29T12:26:57.830Z" hostname="chromium" tests="3" failures="0" skipped="0" time="14.077" errors="0">
+<testcase name="User Authentication Flow › Positive Scenarios › Signup → DB Activation → Login" classname="signup.spec.ts" time="10.948">
 <system-out>
-<![CDATA[User testuse_1759143263016_8383@example.com activated in DB
-User testuse_1759143263016_8383@example.com deleted from DB
+<![CDATA[User testuse_1759148819935_7868@example.com activated in DB
+User testuse_1759148819935_7868@example.com deleted from DB
 ]]>
 </system-out>
 </testcase>
-<testcase name="User Authentication Flow › Negative Scenarios › Signup with already existing email should fail" classname="signup.spec.ts" time="1.416">
+<testcase name="User Authentication Flow › Negative Scenarios › Signup with already existing email should fail" classname="signup.spec.ts" time="1.538">
 </testcase>
-<testcase name="User Authentication Flow › Negative Scenarios › Signup with invalid email should fail" classname="signup.spec.ts" time="1.543">
+<testcase name="User Authentication Flow › Negative Scenarios › Signup with invalid email should fail" classname="signup.spec.ts" time="1.591">
 </testcase>
 </testsuite>
 </testsuites>

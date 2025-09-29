@@ -388,20 +388,20 @@ export default async function globalTeardown() {
     await sendTeamsMessage({ summary: teamsHtml, reportUrl });
 
     // Ask for email
-    const sendEmailAns = (await askQuestion("Do you want to send email? (yes/no): ")).toLowerCase();
-    if (sendEmailAns === "yes") {
-      const emailToInput = await askQuestion("Enter recipient emails (comma separated): ");
-      const recipients = emailToInput.split(",").map(e => e.trim()).filter(Boolean);
+    // const sendEmailAns = (await askQuestion("Do you want to send email? (yes/no): ")).toLowerCase();
+    // if (sendEmailAns === "yes") {
+    //   const emailToInput = await askQuestion("Enter recipient emails (comma separated): ");
+    //   const recipients = emailToInput.split(",").map(e => e.trim()).filter(Boolean);
 
-      for (const recipient of recipients) {
-        try {
-          await sendTestReportEmail(recipient, { total, passed, failed, failedTests }, reportUrl, emailHtml);
-          console.log(`✅ Email sent successfully to ${recipient}`);
-        } catch (err) {
-          console.error(`❌ Failed to send email to ${recipient}:`, err);
-        }
-      }
-    }
+    // //  for (const recipient of recipients) {
+    // //     try {
+    // //       await sendTestReportEmail(recipient, { total, passed, failed, failedTests }, reportUrl, emailHtml);
+    // //       console.log(`✅ Email sent successfully to ${recipient}`);
+    // //     } catch (err) {
+    // //       console.error(`❌ Failed to send email to ${recipient}:`, err);
+    // //     }
+    // //   } 
+    // }
   } catch (err) {
     console.error("❌ Error in globalTeardown:", err);
   }
