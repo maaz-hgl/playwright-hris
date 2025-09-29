@@ -1,6 +1,17 @@
 pipeline {
     agent any
 
+    
+    withEnv(["PATH=/opt/homebrew/bin:${env.PATH}"]) {
+    stage('Install Dependencies') {
+        sh 'npm ci'
+    }
+    
+    stage('Run Playwright Tests') {
+        sh 'npx playwright test'
+    }
+}
+
     environment {
         DOTENV_FILE = '.env'
         NODE_VERSION = '18'  // your node version
