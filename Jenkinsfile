@@ -60,4 +60,4 @@ pipeline {
             echo "Build failed, check decryption & encrypted values in .env!"
         }
     }
-}
+
