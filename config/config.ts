@@ -4,13 +4,38 @@ import crypto from "crypto";
 dotenv.config();
 
 // Safe decrypt function
+// function decryptSafe(encrypted?: string, secretKey?: string): string {
+//   if (!encrypted) return "";
+//   if (!secretKey) throw new Error("SECRET_KEY is missing in env");
+//   const [ivHex, encryptedHex] = encrypted.split(":");
+//   if (!ivHex || !encryptedHex) return "";
+//   const iv = Buffer.from(ivHex, "hex");
+//   const encryptedText = Buffer.from(encryptedHex, "hex");
+
+//   const decipher = crypto.createDecipheriv(
+//     "aes-256-cbc",
+//     Buffer.from(secretKey, "hex"),
+//     iv
+//   );
+
+//   let decrypted = decipher.update(encryptedText);
+//   decrypted = Buffer.concat([decrypted, decipher.final()]);
+//   return decrypted.toString("utf8");
+// }
+
+
 function decryptSafe(encrypted?: string, secretKey?: string): string {
   if (!encrypted) return "";
   if (!secretKey) throw new Error("SECRET_KEY is missing in env");
+
   const [ivHex, encryptedHex] = encrypted.split(":");
-  if (!ivHex || !encryptedHex) return "";
+  if (!ivHex || !encryptedHex) throw new Error("Encrypted value is malformed");
+
   const iv = Buffer.from(ivHex, "hex");
   const encryptedText = Buffer.from(encryptedHex, "hex");
+
+  if (iv.length !== 16) throw new Error("IV length invalid");
+  if (encryptedText.length === 0) throw new Error("Ciphertext is empty");
 
   const decipher = crypto.createDecipheriv(
     "aes-256-cbc",
@@ -18,10 +43,17 @@ function decryptSafe(encrypted?: string, secretKey?: string): string {
     iv
   );
 
-  let decrypted = decipher.update(encryptedText);
-  decrypted = Buffer.concat([decrypted, decipher.final()]);
+  let decrypted;
+  try {
+    decrypted = Buffer.concat([decipher.update(encryptedText), decipher.final()]);
+  } catch (err) {
+    throw new Error("Decryption failed: possibly truncated or wrong key/IV");
+  }
+
   return decrypted.toString("utf8");
 }
+
+
 
 // Secret key from environment
 const secretKey = process.env.SECRET_KEY;
@@ -79,3 +111,4 @@ export const config = {
     azureTenantId: process.env.AZURE_TENANT_ID,
   },
 };
+
