@@ -1,17 +1,8 @@
 pipeline {
     agent any
 
-
-   
-    
-    stage('Run Playwright Tests') {
-        sh 'npx playwright test'
-    }
-}
-
-
     environment {
-         PATH = "/opt/homebrew/bin:${env.PATH}"
+        PATH = "/opt/homebrew/bin:${env.PATH}"
         DOTENV_FILE = '.env'
         NODE_VERSION = '18'  // your node version
     }
@@ -60,4 +51,4 @@ pipeline {
             echo "Build failed, check decryption & encrypted values in .env!"
         }
     }
-
+}
