@@ -38,7 +38,7 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 withCredentials([
-                    string(credentialsId: 'SECRET_KEY', variable: 'SECRET_KEY'),
+                    string(credentialsId: 'secret_key', variable: 'SECRET_KEY'),
                     string(credentialsId: 'BASE_URL', variable: 'BASE_URL'),
                     // string(credentialsId: 'Login_Email_ENCRYPTED', variable: 'Login_Email_ENCRYPTED'),
                     // string(credentialsId: 'Login_Password_ENCRYPTED', variable: 'Login_Password_ENCRYPTED'),
