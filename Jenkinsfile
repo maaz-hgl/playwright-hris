@@ -15,6 +15,11 @@ pipeline {
         EMAIL_TO = 'sinchanaslnaidu1610@gmail.com'
         DB_USER = 'postgres'
 
+
+         // Email + Teams config (you can keep them in Jenkins credentials too)
+        SEND_EMAIL = "true" // set "false" if you want to skip mails
+        EMAIL_TO   = "maaz.hagalwadi@sync-dynamics.com"
+
         // Teams IDs
         TEAMS_CHAT_ID = '19:575a63f0-bebb-4bbb-a8aa-72e478c2051d_f168194a-0d61-46ca-be2e-c4e75ff9b8be@unq.gbl.spaces'
         TEAMS_GROUP_ID = '19:DkOoz9LRk_DIHO7QkmC_4Tr_1rF-cPf_OQFK7zF5L_s1@thread.tacv2'
