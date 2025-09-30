@@ -1,4 +1,4 @@
-<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background: #fafafa;">
+<!-- <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background: #fafafa;">
   <h2>Automation Test Report</h2>
   <h3>Project: HRIS</h3>
   <table border="1" cellpadding="6" cellspacing="0" style="border-collapse: collapse; width: 100%;">
@@ -12,4 +12,19 @@
   </table>
   <p>Full report: <a href="${reportUrl}">Click Here</a></p>
   <p>Regards,<br/>Automation Team</p>
-</div>
+</div> -->
+
+
+<h2>Playwright Test Report</h2>
+<p><strong>Start Time:</strong> ${startTime}</p>
+<p><strong>Total Tests:</strong> ${total}</p>
+<p><strong>Passed:</strong> ${passed}</p>
+<p><strong>Failed:</strong> ${failed}</p>
+<p><strong>Skipped:</strong> ${skipped}</p>
+
+% if (failedTests) { %
+<p><strong>Failed Tests:</strong><br>${failedTests}</p>
+% } %
+
+<p><a href="${reportUrl}">View Allure Report</a></p>
+<p><a href="${buildUrl}">View Jenkins Build</a></p>
