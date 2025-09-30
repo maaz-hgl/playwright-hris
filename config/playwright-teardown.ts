@@ -567,7 +567,7 @@ export default async function globalTeardown() {
     await sendTeamsMessage({ summary: teamsHtml, reportUrl });
 
     // Ask for email
-    const sendEmailAns = (await askQuestion("Do you want to send email? (yes/no): ")).toLowerCase();
+    const sendEmailAns = process.env.CI === "true" ? "yes" : await askQuestion("Do you want to send email? (yes/no): ");
     if (sendEmailAns === "yes") {
       const emailToInput = await askQuestion("Enter recipient emails (comma separated): ");
       const recipients = emailToInput.split(",").map(e => e.trim()).filter(Boolean);
