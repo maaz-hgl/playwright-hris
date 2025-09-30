@@ -69,7 +69,7 @@ stage('Publish Allure Report') {
             includeProperties: false,
             jdk: '',
             results: [[path: 'allure-results']],
-            installationName: 'allure-2.32.0' // must match Global Tool Config
+            commandline: 'allure-2.32.0' // must match Global Tool Config
         ])
     }
 }
