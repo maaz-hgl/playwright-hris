@@ -12,13 +12,13 @@ pipeline {
         SIGNUP_PASS = 'StrongPass123!'
         SIGNUP_EMAIL_PREFIX = 'testuse'
         EXISTING_EMAIL = 'giri@admin.com'
-        EMAIL_TO = 'sinchanaslnaidu1610@gmail.com'
+        EMAIL_TO   = "maaz.hagalwadi@sync-dynamics.com"
         DB_USER = 'postgres'
 
 
          // Email + Teams config (you can keep them in Jenkins credentials too)
         SEND_EMAIL = "true" // set "false" if you want to skip mails
-        EMAIL_TO   = "maaz.hagalwadi@sync-dynamics.com"
+        
 
         // Teams IDs
         TEAMS_CHAT_ID = '19:575a63f0-bebb-4bbb-a8aa-72e478c2051d_f168194a-0d61-46ca-be2e-c4e75ff9b8be@unq.gbl.spaces'
