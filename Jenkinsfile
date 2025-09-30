@@ -62,6 +62,18 @@ pipeline {
             }
         }
 
+
+stage('Publish Allure Report') {
+    steps {
+        allure([
+            includeProperties: false,
+            jdk: '',
+            results: [[path: 'allure-results']],
+            installationName: 'allure-2.32.0' // must match Global Tool Config
+        ])
+    }
+}
+
        
 
         stage('Publish Allure Report') {
