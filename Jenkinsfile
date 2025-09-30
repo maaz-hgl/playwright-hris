@@ -34,24 +34,7 @@ pipeline {
             }
         }
 
-        stage('Run Playwright Tests') {
-            steps {
-                script {
-                    // Catch errors to allow report generation
-                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                        // Run Playwright with JSON and HTML reporters
-                        sh 'npx playwright test --reporter=json,html'
-                    }
-
-                    // Read test results for Teams summary
-                    def results = readJSON file: 'playwright-report/results.json' // Path to your JSON report
-                    env.TOTAL_TESTS = results.total.toString()
-                    env.PASSED_TESTS = results.passed.toString()
-                    env.FAILED_TESTS = results.failed.toString()
-                    env.FAILED_TEST_NAMES = results.tests.findAll { it.status == 'failed' }.collect { it.title }.join(', ')
-                }
-            }
-        }
+       
 
         stage('Install Dependencies') {
             steps {
@@ -59,27 +42,52 @@ pipeline {
             }
         }
 
+        // stage('Run Playwright Tests') {
+        //     steps {
+        //         withCredentials([
+        //             string(credentialsId: 'secret_key', variable: 'SECRET_KEY'),
+        //             string(credentialsId: 'BASE_URL', variable: 'BASE_URL'),
+        //             string(credentialsId: 'Login_Email_ENCRYPTED', variable: 'Login_Email_ENCRYPTED'),
+        //             string(credentialsId: 'Login_Password_ENCRYPTED', variable: 'Login_Password_ENCRYPTED'),
+        //             string(credentialsId: 'DB_DATABASE_NAME_ENCRYPTED', variable: 'DB_DATABASE_NAME_ENCRYPTED'),
+        //             string(credentialsId: 'DB_PASSWORD_ENCRYPTED', variable: 'DB_PASSWORD_ENCRYPTED'),
+        //             string(credentialsId: 'EMAIL_USER', variable: 'EMAIL_USER'),
+        //             string(credentialsId: 'EMAIL_PASS', variable: 'EMAIL_PASS'),
+        //             string(credentialsId: 'TEAMS_WEBHOOK_URL', variable: 'TEAMS_WEBHOOK_URL'),
+        //             string(credentialsId: 'GRAPH_ACCESS_TOKEN_ENCRYPTED', variable: 'GRAPH_ACCESS_TOKEN_ENCRYPTED')
+        //         ]) {
+        //             sh '''
+        //                 echo "Starting Playwright tests..."
+        //                 npx playwright test
+        //             '''
+        //         }
+        //     }
+        // }
+
+
         stage('Run Playwright Tests') {
-            steps {
-                withCredentials([
-                    string(credentialsId: 'secret_key', variable: 'SECRET_KEY'),
-                    string(credentialsId: 'BASE_URL', variable: 'BASE_URL'),
-                    string(credentialsId: 'Login_Email_ENCRYPTED', variable: 'Login_Email_ENCRYPTED'),
-                    string(credentialsId: 'Login_Password_ENCRYPTED', variable: 'Login_Password_ENCRYPTED'),
-                    string(credentialsId: 'DB_DATABASE_NAME_ENCRYPTED', variable: 'DB_DATABASE_NAME_ENCRYPTED'),
-                    string(credentialsId: 'DB_PASSWORD_ENCRYPTED', variable: 'DB_PASSWORD_ENCRYPTED'),
-                    string(credentialsId: 'EMAIL_USER', variable: 'EMAIL_USER'),
-                    string(credentialsId: 'EMAIL_PASS', variable: 'EMAIL_PASS'),
-                    string(credentialsId: 'TEAMS_WEBHOOK_URL', variable: 'TEAMS_WEBHOOK_URL'),
-                    string(credentialsId: 'GRAPH_ACCESS_TOKEN_ENCRYPTED', variable: 'GRAPH_ACCESS_TOKEN_ENCRYPTED')
-                ]) {
-                    sh '''
-                        echo "Starting Playwright tests..."
-                        npx playwright test
-                    '''
-                }
+    steps {
+        withCredentials([
+            string(credentialsId: 'SECRET_KEY', variable: 'SECRET_KEY'),
+            string(credentialsId: 'BASE_URL', variable: 'BASE_URL'),
+            string(credentialsId: 'Login_Email_ENCRYPTED', variable: 'Login_Email_ENCRYPTED'),
+            string(credentialsId: 'Login_Password_ENCRYPTED', variable: 'Login_Password_ENCRYPTED'),
+            string(credentialsId: 'DB_DATABASE_NAME_ENCRYPTED', variable: 'DB_DATABASE_NAME_ENCRYPTED'),
+            string(credentialsId: 'DB_PASSWORD_ENCRYPTED', variable: 'DB_PASSWORD_ENCRYPTED'),
+            string(credentialsId: 'EMAIL_USER', variable: 'EMAIL_USER'),
+            string(credentialsId: 'EMAIL_PASS', variable: 'EMAIL_PASS'),
+            string(credentialsId: 'TEAMS_WEBHOOK_URL', variable: 'TEAMS_WEBHOOK_URL')
+        ]) {
+            catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                sh '''
+                    echo "Starting Playwright tests..."
+                    npx playwright test --reporter=json,html
+                '''
             }
         }
+    }
+}
+
 
 
 stage('Publish Allure Report') {
