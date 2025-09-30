@@ -76,8 +76,9 @@ pipeline {
             string(credentialsId: 'DB_PASSWORD_ENCRYPTED', variable: 'DB_PASSWORD_ENCRYPTED'),
             string(credentialsId: 'EMAIL_USER', variable: 'EMAIL_USER'),
             string(credentialsId: 'EMAIL_PASS', variable: 'EMAIL_PASS'),
-            string(credentialsId: 'TEAMS_WEBHOOK_URL', variable: 'TEAMS_WEBHOOK_URL')
+            string(credentialsId: 'TEAMS_WEBHOOK_URL', variable: 'TEAMS_WEBHOOK_URL'),
             string(credentialsId: 'GRAPH_ACCESS_TOKEN_ENCRYPTED', variable: 'GRAPH_ACCESS_TOKEN_ENCRYPTED')
+
         ]) {
             catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
                 sh '''
