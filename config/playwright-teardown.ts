@@ -420,8 +420,6 @@ interface TemplateReplacements {
   failedPercent: string;
   skippedPercent: string;
   flaky: number;
-  buildUrl: string;
-  failedTests?: string;
 }
 
 interface TestSuite {
@@ -457,7 +455,7 @@ async function sendTeamsMessage({ summary, reportUrl }: TeamsMessage) {
     const messageBody = {
       body: {
         contentType: "html",
-        content: summary + (reportUrl ? `<br><a href="${reportUrl}"></a>` : ""),
+        content: summary + (reportUrl ? `<br><a href="${reportUrl}">View Report</a>` : ""),
       },
     };
 
@@ -500,9 +498,7 @@ export default async function globalTeardown() {
     const report = JSON.parse(fs.readFileSync(jsonReportPath, "utf-8"));
 
     // Aggregate results
-    let total = 0,
-      passed = 0,
-      failed = 0;
+    let total = 0, passed = 0, failed = 0;
     const failedTests: string[] = [];
     const skipped = report.skipped || 0;
     const flaky = report.flaky || 0;
@@ -539,7 +535,6 @@ export default async function globalTeardown() {
     await new Promise(resolve => setTimeout(resolve, 2000));
     const reportUrl = `http://localhost:${port}/index.html`;
     const startTime = new Date(report.startTime || Date.now()).toLocaleString();
-    const buildUrl = process.env.BUILD_URL || "http://localhost:8080/job/Playwright-Tests-HRIS/25/";
 
     // Load templates
     const teamsTemplate = fs.readFileSync(path.join(__dirname, "../templates/teamsSummary.html"), "utf-8");
@@ -556,8 +551,6 @@ export default async function globalTeardown() {
       failedPercent: ((failed / total) * 100).toFixed(2),
       skippedPercent: ((skipped / total) * 100).toFixed(2),
       flaky,
-      buildUrl,
-      failedTests: failedTests.join("<br>")
     };
 
     const teamsHtml = replacePlaceholders(teamsTemplate, replacements);
@@ -566,18 +559,32 @@ export default async function globalTeardown() {
     // Send Teams message
     await sendTeamsMessage({ summary: teamsHtml, reportUrl });
 
-    // Ask for email
-    const sendEmailAns = process.env.CI === "true" ? "yes" : await askQuestion("Do you want to send email? (yes/no): ");
-    if (sendEmailAns === "yes") {
-      const emailToInput = await askQuestion("Enter recipient emails (comma separated): ");
-      const recipients = emailToInput.split(",").map(e => e.trim()).filter(Boolean);
+    // Determine email sending
+    const sendEmailJenkins = process.env.SEND_EMAIL === 'true';
+    const recipients = process.env.EMAIL_RECIPIENTS?.split(',').map(e => e.trim()).filter(Boolean) || [];
 
+    if (sendEmailJenkins && recipients.length > 0) {
       for (const recipient of recipients) {
         try {
           await sendTestReportEmail(recipient, { total, passed, failed, failedTests }, reportUrl, emailHtml);
           console.log(`✅ Email sent successfully to ${recipient}`);
         } catch (err) {
           console.error(`❌ Failed to send email to ${recipient}:`, err);
+        }
+      }
+    } else {
+      // fallback for local/manual run
+      const sendEmailAns = (await askQuestion("Do you want to send email? (yes/no): ")).toLowerCase();
+      if (sendEmailAns === "yes") {
+        const emailToInput = await askQuestion("Enter recipient emails (comma separated): ");
+        const localRecipients = emailToInput.split(",").map(e => e.trim()).filter(Boolean);
+        for (const recipient of localRecipients) {
+          try {
+            await sendTestReportEmail(recipient, { total, passed, failed, failedTests }, reportUrl, emailHtml);
+            console.log(`✅ Email sent successfully to ${recipient}`);
+          } catch (err) {
+            console.error(`❌ Failed to send email to ${recipient}:`, err);
+          }
         }
       }
     }
