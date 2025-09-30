@@ -68,7 +68,7 @@ pipeline {
         stage('Run Playwright Tests') {
     steps {
         withCredentials([
-            string(credentialsId: 'SECRET_KEY', variable: 'SECRET_KEY'),
+            string(credentialsId: 'secret_key', variable: 'SECRET_KEY'),
             string(credentialsId: 'BASE_URL', variable: 'BASE_URL'),
             string(credentialsId: 'Login_Email_ENCRYPTED', variable: 'Login_Email_ENCRYPTED'),
             string(credentialsId: 'Login_Password_ENCRYPTED', variable: 'Login_Password_ENCRYPTED'),
@@ -77,6 +77,7 @@ pipeline {
             string(credentialsId: 'EMAIL_USER', variable: 'EMAIL_USER'),
             string(credentialsId: 'EMAIL_PASS', variable: 'EMAIL_PASS'),
             string(credentialsId: 'TEAMS_WEBHOOK_URL', variable: 'TEAMS_WEBHOOK_URL')
+            string(credentialsId: 'GRAPH_ACCESS_TOKEN_ENCRYPTED', variable: 'GRAPH_ACCESS_TOKEN_ENCRYPTED')
         ]) {
             catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
                 sh '''
