@@ -34,6 +34,25 @@ pipeline {
             }
         }
 
+        stage('Run Playwright Tests') {
+            steps {
+                script {
+                    // Catch errors to allow report generation
+                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                        // Run Playwright with JSON and HTML reporters
+                        sh 'npx playwright test --reporter=json,html'
+                    }
+
+                    // Read test results for Teams summary
+                    def results = readJSON file: 'playwright-report/results.json' // Path to your JSON report
+                    env.TOTAL_TESTS = results.total.toString()
+                    env.PASSED_TESTS = results.passed.toString()
+                    env.FAILED_TESTS = results.failed.toString()
+                    env.FAILED_TEST_NAMES = results.tests.findAll { it.status == 'failed' }.collect { it.title }.join(', ')
+                }
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 sh 'npm ci'
