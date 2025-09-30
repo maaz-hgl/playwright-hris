@@ -74,13 +74,6 @@ stage('Publish Allure Report') {
     }
 }
 
-       
-
-        stage('Publish Allure Report') {
-            steps {
-                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
-            }
-        }
     }
 
     post {
