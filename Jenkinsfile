@@ -21,7 +21,7 @@ pipeline {
         
 
         // Teams IDs
-        TEAMS_CHAT_ID = '19:575a63f0-bebb-4bbb-a8aa-72e478c2051d_f168194a-0d61-46ca-be2e-c4e75ff9b8be@unq.gbl.spaces'
+        TEAMS_CHAT_ID = '19:d561b46e-a37a-4841-a42a-520a90bf1a2b_f168194a-0d61-46ca-be2e-c4e75ff9b8be@unq.gbl.spaces'
         TEAMS_GROUP_ID = '19:DkOoz9LRk_DIHO7QkmC_4Tr_1rF-cPf_OQFK7zF5L_s1@thread.tacv2'
         TEAMS_TEAM_ID = '97b3591f-675a-49da-a4af-caec07ef0c5b'
         TEAMS_CHANNEL_ID = '19:DkOoz9LRk_DIHO7QkmC_4Tr_1rF-cPf_OQFK7zF5L_s1@thread.tacv2'
@@ -62,11 +62,7 @@ pipeline {
             }
         }
 
-        stage('Generate Allure Report') {
-            steps {
-                sh 'npx allure generate allure-results --clean -o allure-report'
-            }
-        }
+       
 
         stage('Publish Allure Report') {
             steps {
