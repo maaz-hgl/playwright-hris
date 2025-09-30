@@ -40,14 +40,14 @@ pipeline {
                 withCredentials([
                     string(credentialsId: 'secret_key', variable: 'SECRET_KEY'),
                     string(credentialsId: 'BASE_URL', variable: 'BASE_URL'),
-                    // string(credentialsId: 'Login_Email_ENCRYPTED', variable: 'Login_Email_ENCRYPTED'),
-                    // string(credentialsId: 'Login_Password_ENCRYPTED', variable: 'Login_Password_ENCRYPTED'),
-                    // string(credentialsId: 'DB_DATABASE_NAME_ENCRYPTED', variable: 'DB_DATABASE_NAME_ENCRYPTED'),
-                    // string(credentialsId: 'DB_PASSWORD_ENCRYPTED', variable: 'DB_PASSWORD_ENCRYPTED'),
-                    // string(credentialsId: 'EMAIL_USER', variable: 'EMAIL_USER'),
-                    // string(credentialsId: 'EMAIL_PASS', variable: 'EMAIL_PASS'),
-                    // string(credentialsId: 'TEAMS_WEBHOOK_URL', variable: 'TEAMS_WEBHOOK_URL'),
-                    // string(credentialsId: 'GRAPH_ACCESS_TOKEN_ENCRYPTED', variable: 'GRAPH_ACCESS_TOKEN_ENCRYPTED')
+                    string(credentialsId: 'Login_Email_ENCRYPTED', variable: 'Login_Email_ENCRYPTED'),
+                    string(credentialsId: 'Login_Password_ENCRYPTED', variable: 'Login_Password_ENCRYPTED'),
+                    string(credentialsId: 'DB_DATABASE_NAME_ENCRYPTED', variable: 'DB_DATABASE_NAME_ENCRYPTED'),
+                    string(credentialsId: 'DB_PASSWORD_ENCRYPTED', variable: 'DB_PASSWORD_ENCRYPTED'),
+                    string(credentialsId: 'EMAIL_USER', variable: 'EMAIL_USER'),
+                    string(credentialsId: 'EMAIL_PASS', variable: 'EMAIL_PASS'),
+                    string(credentialsId: 'TEAMS_WEBHOOK_URL', variable: 'TEAMS_WEBHOOK_URL'),
+                    string(credentialsId: 'GRAPH_ACCESS_TOKEN_ENCRYPTED', variable: 'GRAPH_ACCESS_TOKEN_ENCRYPTED')
                 ]) {
                     sh '''
                         echo "Starting Playwright tests..."

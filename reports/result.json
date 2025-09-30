@@ -96,12 +96,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5753,
+                  "duration": 5559,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-09-29T12:26:58.219Z",
+                  "startTime": "2025-09-30T05:18:17.930Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -152,12 +152,12 @@
                           "workerIndex": 1,
                           "parallelIndex": 1,
                           "status": "passed",
-                          "duration": 5341,
+                          "duration": 5039,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2025-09-29T12:26:58.221Z",
+                          "startTime": "2025-09-30T05:18:17.905Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -194,12 +194,12 @@
                           "workerIndex": 1,
                           "parallelIndex": 1,
                           "status": "passed",
-                          "duration": 1951,
+                          "duration": 1559,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2025-09-29T12:27:04.678Z",
+                          "startTime": "2025-09-30T05:18:24.213Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -228,12 +228,12 @@
                           "workerIndex": 1,
                           "parallelIndex": 1,
                           "status": "passed",
-                          "duration": 1694,
+                          "duration": 1444,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2025-09-29T12:27:06.646Z",
+                          "startTime": "2025-09-30T05:18:25.793Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -262,7 +262,7 @@
                           "workerIndex": 1,
                           "parallelIndex": 1,
                           "status": "failed",
-                          "duration": 6588,
+                          "duration": 6575,
                           "error": {
                             "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('div[role=\"alert\"]').first()\nExpected pattern: \u001b[32m/Invalid passworddddjkk/i\u001b[39m\nReceived string:  \u001b[31m\"Invalid password\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[role=\"alert\"]').first()\u001b[22m\n\u001b[2m    7 × locator resolved to <div role=\"alert\" class=\"MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorError MuiAlert-standardError MuiAlert-standard css-1lr36y1-MuiPaper-root-MuiAlert-root\">…</div>\u001b[22m\n\u001b[2m      - unexpected value \"Invalid password\"\u001b[22m\n",
                             "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('div[role=\"alert\"]').first()\nExpected pattern: \u001b[32m/Invalid passworddddjkk/i\u001b[39m\nReceived string:  \u001b[31m\"Invalid password\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[role=\"alert\"]').first()\u001b[22m\n\u001b[2m    7 × locator resolved to <div role=\"alert\" class=\"MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorError MuiAlert-standardError MuiAlert-standard css-1lr36y1-MuiPaper-root-MuiAlert-root\">…</div>\u001b[22m\n\u001b[2m      - unexpected value \"Invalid password\"\u001b[22m\n\n    at /Users/macbookair/Desktop/PlaywrightHRIS/tests/login.spec.ts:141:27",
@@ -286,7 +286,7 @@
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2025-09-29T12:27:08.348Z",
+                          "startTime": "2025-09-30T05:18:27.244Z",
                           "annotations": [],
                           "attachments": [
                             {
@@ -367,19 +367,19 @@
                           "workerIndex": 2,
                           "parallelIndex": 2,
                           "status": "passed",
-                          "duration": 10948,
+                          "duration": 10805,
                           "errors": [],
                           "stdout": [
                             {
-                              "text": "User testuse_1759148819935_7868@example.com activated in DB\n"
+                              "text": "User testuse_1759209499706_3526@example.com activated in DB\n"
                             },
                             {
-                              "text": "User testuse_1759148819935_7868@example.com deleted from DB\n"
+                              "text": "User testuse_1759209499706_3526@example.com deleted from DB\n"
                             }
                           ],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2025-09-29T12:26:58.229Z",
+                          "startTime": "2025-09-30T05:18:17.941Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -416,12 +416,12 @@
                           "workerIndex": 2,
                           "parallelIndex": 2,
                           "status": "passed",
-                          "duration": 1538,
+                          "duration": 1555,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2025-09-29T12:27:10.286Z",
+                          "startTime": "2025-09-30T05:18:29.969Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -450,12 +450,12 @@
                           "workerIndex": 2,
                           "parallelIndex": 2,
                           "status": "passed",
-                          "duration": 1591,
+                          "duration": 1487,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2025-09-29T12:27:11.832Z",
+                          "startTime": "2025-09-30T05:18:31.530Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -477,8 +477,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-29T12:26:57.792Z",
-    "duration": 19605.875,
+    "startTime": "2025-09-30T05:18:17.500Z",
+    "duration": 36174.878000000004,
     "expected": 7,
     "skipped": 0,
     "unexpected": 1,
