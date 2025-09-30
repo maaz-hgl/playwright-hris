@@ -138,7 +138,7 @@ test.describe("Login Tests", () => {
       await loginPage.clickLogin(false); // skip waiting for dashboard
 
       const alert = page.locator('div[role="alert"]').first();
-      await expect(alert).toHaveText(/Invalid password/i);
+      await expect(alert).toHaveText(/Invalid passwordddd/i);
     });
 
   });
